@@ -1,5 +1,4 @@
-﻿
-@{
+﻿{
     ViewBag.Title = "Index";
 }
 
@@ -16,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Model.Models.Alunos aluno in @ViewBag.Aluno)
+            @foreach (Model.Models.Alunos aluno in @ViewBag.Alunos)
             {
                 <tr>
                     <td>@aluno.Id</td>
@@ -52,4 +51,5 @@
         </tfoot>
     </table>
 </div>
+
 

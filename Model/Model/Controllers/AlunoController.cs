@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Model.Controllers
 {
-    public class RecrutadoraController : Controller
+    public class AlunoController : Controller
     {
 
         [HttpGet]
