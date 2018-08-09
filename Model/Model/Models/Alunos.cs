@@ -24,5 +24,7 @@ namespace Model.Models
         public double Nota3 { get; set; }
         [Required(ErrorMessage = "Frequencia não pode ser vazia")]
         public int frequencia { get; set; }
+        [Required(ErrorMessage = "Faltas não pode ser vazia")]
+        public int Faltas { get; set;  }
     }
 }

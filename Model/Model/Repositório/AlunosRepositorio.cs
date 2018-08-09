@@ -106,8 +106,8 @@ namespace Model.Repositório
 
 
 
-                return aluno;
             }
+                return aluno;
         }
     }
 }

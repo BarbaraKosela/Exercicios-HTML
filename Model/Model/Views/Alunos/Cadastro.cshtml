@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+}
+
+<form action="/Alunos/Store" method="post" onsubmit="validarFormulario()">
+
+    <div>
+        <div class="row mt-3">
+
+            <div class="col-md-12">
+                <h5 class="text-primary text-center">Cadastro de aluno</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-nome">
+            <label label for="campo-nome">Nome</label>
+            <input type="text" class="form-control" name="Aluno.Nome" id="campo-nome" placeholder="Digite seu nome" required="required" />
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-matricula">
+            <label label for="campo-matricula">Número da matrícula</label>
+            <input type="text" class="form-control" name="Aluno.Matricula" id="campo-matricula" placeholder="Digite o número de matrícula" required="required" />
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-nota01">
+            <label label for="campo-nota01">Primeira nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota01" id="campo-nota01" placeholder="Digite a primeira nota" required="required" />
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-nota02">
+            <label label for="campo-nota02">Segunda nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota02" id="campo-nota02" placeholder="Digite a segunda nota" required="required" />
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-nota03">
+            <label label for="campo-nota03">Terceira nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota03" id="campo-nota03" placeholder="Digite a terceira nota" required="required" />
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-frequencia">
+            <label label for="campo-frequencia">Frequência</label>
+            <input type="text" class="form-control" name="Aluno.frequencia" id="campo-frequencia" placeholder="Digite a frequencia" required="required" />
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12" id="div-campo-faltas">
+            <label label for="campo-faltas">Faltas</label>
+            <input type="text" class="form-control" name="Aluno.Faltas" id="campo-faltas" placeholder="Digite as faltas" required="required" />
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit"><i class="fa fa-save">Cadastrar</i></button>
+
+
+</form>
+
