@@ -3,5 +3,57 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar</h2>
+<div class="row">
+    <div class="col-md-6"></div>
+    <form action="/Alunos/Update" method="post">
+        <input type="hidden" name="aluno.id" value="@ViewBag.Aluno.Id" />
+        <div class="form-group">
 
+            <label label for="campo-nome">Nome</label>
+            <input type="text"class="form-control"name="Aluno.Nome" id="campo-nome" value="@ViewBag.Aluno.Nome" placeholder="Digite seu nome" />
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-matricula">Matrícula</label>
+            <input type="text" class="form-control" name="Aluno.Matricula" id="campo-matricula" value="@ViewBag.Aluno.Matricula" placeholder="Digite sua matrícula" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-nota01">Primeira nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota01" id="campo-nota01" value="@ViewBag.Aluno.Nota01" placeholder="Digite sua primeira nota" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-nota02">Segunda nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota02" id="campo-nota02" value="@ViewBag.Aluno.Nota02" placeholder="Digite sua segunda nota" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-nota03">Terceira nota</label>
+            <input type="text" class="form-control" name="Aluno.Nota03" id="campo-nota03" value="@ViewBag.Aluno.Nota03" placeholder="Digite sua terceira nota" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-frequencia">Frequencia</label>
+            <input type="text" class="form-control" name="Aluno.frequencia" id="campo-frequencia" value="@ViewBag.Aluno.frequencia" placeholder="Digite sua frequencia" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label label for="campo-faltas">Faltas</label>
+            <input type="text" class="form-control" name="Aluno.Faltas" id="campo-frequencia" value="@ViewBag.Aluno.Faltas" placeholder="Digite suas faltas" />
+
+        </div>
+
+    </form>
+</div>
