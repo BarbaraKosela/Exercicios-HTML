@@ -50,7 +50,7 @@ namespace Model.Controllers
         {
 
             int identificador = new AlunosRepositorio().Cadastrar(aluno);
-            return RedirectToAction("Editar", new { id = identificador });
+            return RedirectToAction("Index", new { id = identificador });
 
 
 

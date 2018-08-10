@@ -43,7 +43,7 @@ namespace Model.Repositório
         public int Cadastrar(Alunos aluno)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = @"INSERT INTO alunos (nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia,faltas) OUTPUT
+            comando.CommandText = @"INSERT INTO aluno (nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia,faltas) OUTPUT
             INSERTED.ID VALUES (@NOME, @CODIGO_MATRICULA, @NOTA_01, @NOTA_02, @NOTA_03, @FREQUENCIA, @FALTAS)";
             comando.Parameters.AddWithValue("@NOME", aluno.Nome);
             comando.Parameters.AddWithValue("@CODIGO_MATRICULA", aluno.Matricula);
@@ -61,7 +61,7 @@ namespace Model.Repositório
         public bool Alterar(Alunos aluno)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "UPDATE alunos SET nome = @NOME, codigo_matricula = @CODIGO_MATRICULA, nota_01 = @NOTA_01, nota_02 = @NOTA_02, nota_03 = NOTA_03, frequencia = @FREQUENCIA, faltas = @FALTAS WHERE id = @ID";
+            comando.CommandText = "UPDATE aluno SET nome = @NOME, codigo_matricula = @CODIGO_MATRICULA, nota_01 = @NOTA_01, nota_02 = @NOTA_02, nota_03 = NOTA_03, frequencia = @FREQUENCIA, faltas = @FALTAS WHERE id = @ID";
             comando.Parameters.AddWithValue("@NOME", aluno.Nome);
             comando.Parameters.AddWithValue("@CODIGO_MATRICULA", aluno.Matricula);
             comando.Parameters.AddWithValue("@NOTA_01", aluno.Nota1);
@@ -78,7 +78,7 @@ namespace Model.Repositório
         public bool Excluir(int id)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "DELETE FROM alunos WHERE id = @ID";
+            comando.CommandText = "DELETE FROM aluno WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             return comando.ExecuteNonQuery() == 1;
 
@@ -88,21 +88,21 @@ namespace Model.Repositório
         {
             Alunos aluno = null;
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "SELECT nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia, faltas FROM alunos WHERE id = @ID";
+            comando.CommandText = "SELECT nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia, faltas FROM aluno WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             if (tabela.Rows.Count == 1)
             {
                 aluno = new Alunos();
-                aluno.Id = Convert.ToInt32(tabela.Rows[0][0].ToString());
-                aluno.Nome = tabela.Rows[0][1].ToString();
-                aluno.Matricula = tabela.Rows[0][2].ToString();
-                aluno.Nota1 = Convert.ToDouble(tabela.Rows[0][3].ToString());
-                aluno.Nota2 = Convert.ToDouble(tabela.Rows[0][4].ToString());
-                aluno.Nota3 = Convert.ToDouble(tabela.Rows[0][5].ToString());
-                aluno.frequencia = Convert.ToInt32(tabela.Rows[0][6].ToString());
-                aluno.Faltas = Convert.ToInt16(tabela.Rows[0][7].ToString());
+                aluno.Id = id;
+                aluno.Nome = tabela.Rows[0][0].ToString();
+                aluno.Matricula = tabela.Rows[0][1].ToString();
+                aluno.Nota1 = Convert.ToDouble(tabela.Rows[0][2].ToString());
+                aluno.Nota2 = Convert.ToDouble(tabela.Rows[0][3].ToString());
+                aluno.Nota3 = Convert.ToDouble(tabela.Rows[0][4].ToString());
+                aluno.frequencia = Convert.ToInt32(tabela.Rows[0][5].ToString());
+                aluno.Faltas = Convert.ToInt32(tabela.Rows[0][6].ToString());
 
 
 
