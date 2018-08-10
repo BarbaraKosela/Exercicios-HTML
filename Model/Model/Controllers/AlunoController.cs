@@ -32,7 +32,7 @@ namespace Model.Controllers
         public ActionResult Editar(int id)
         {
             Alunos aluno = new AlunosRepositorio().ObterPeloID(id);
-            ViewBag.Aluno = new Alunos();
+            ViewBag.Aluno = aluno;
             ViewBag.TituloPaginas = "Alunos - Editar";
             return View();
         }
