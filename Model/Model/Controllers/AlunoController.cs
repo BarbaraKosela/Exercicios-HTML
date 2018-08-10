@@ -32,7 +32,7 @@ namespace Model.Controllers
         public ActionResult Editar(int id)
         {
             Alunos aluno = new AlunosRepositorio().ObterPeloID(id);
-            ViewBag.Aluno = aluno;
+            ViewBag.Aluno = new Alunos();
             ViewBag.TituloPaginas = "Alunos - Editar";
             return View();
         }
@@ -48,15 +48,12 @@ namespace Model.Controllers
         [HttpPost]
         public ActionResult Store(Alunos aluno)
         {
-            if (ModelState.IsValid)
-            {
-                
-                int identificador = new AlunosRepositorio().Cadastrar(aluno);
-                return RedirectToAction("Editar", new { id = identificador });
 
-            }
-            ViewBag.aluno = aluno;
-            return View("Cadastro");
+            int identificador = new AlunosRepositorio().Cadastrar(aluno);
+            return RedirectToAction("Editar", new { id = identificador });
+
+
+
         }
 
         [HttpPost]
@@ -66,6 +63,6 @@ namespace Model.Controllers
             return null;
         }
 
-        
+
     }
 }

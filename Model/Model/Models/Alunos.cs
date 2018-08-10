@@ -17,14 +17,19 @@ namespace Model.Models
         [MinLength(10, ErrorMessage = "O número de caracteres necessários para a matrícula são de 10 dígitos")]
         public string Matricula { get; set; }
         [Required(ErrorMessage = "Primeira nota não pode ser vazia")]
+        [Range(0, 10, ErrorMessage = "Nota deve ser entre 0 a 10")]
         public double Nota1 { get; set; }
         [Required(ErrorMessage = "Segunda nota não pode ser vazia")]
+        [Range(0,10,ErrorMessage="Nota deve ser entre 0 a 10")]
         public double Nota2 { get; set; }
-        [Required(ErrorMessage = "Terceira nota não pode ser vazia")]
+        [Required(ErrorMessage = "Terceira nota não pode ser vazia")] 
+        [Range(0,10,ErrorMessage="Nota deve ser entre 0 a 10")]
         public double Nota3 { get; set; }
         [Required(ErrorMessage = "Frequencia não pode ser vazia")]
+        [Range(0, 100, ErrorMessage = "Frequencia deve ser entre 0% a 100%")]
         public int frequencia { get; set; }
         [Required(ErrorMessage = "Faltas não pode ser vazia")]
+        [Range(0, 50, ErrorMessage = "Faltas devem estar entre 0 a 50 falta no ano letivo")]
         public int Faltas { get; set;  }
     }
 }

@@ -14,7 +14,7 @@ namespace Model.Repositório
 
         public List<Alunos> ObterTodos()
         {
-            List<Alunos> alunos = new List<Alunos>();
+            List<Alunos> aluno = new List<Alunos>();
             SqlCommand comando = new BancoDados().ObterConexao();
             comando.CommandText = "SELECT id,nome,matricula,nota01,nota02,nota03,frequencia, faltas FROM alunos";
             DataTable tabela = new DataTable();
@@ -22,7 +22,7 @@ namespace Model.Repositório
 
             foreach (DataRow linha in tabela.Rows)
             {
-                Alunos aluno = new Alunos()
+                Alunos alunos = new Alunos()
 
                 {
                     Id = Convert.ToInt32(linha[0].ToString()),
@@ -34,9 +34,9 @@ namespace Model.Repositório
                     frequencia = Convert.ToInt32(linha[6].ToString()),
                     Faltas = Convert.ToInt16(linha[7].ToString())
                 };
-                alunos.Add(aluno);
+                aluno.Add(alunos);
             }
-            return alunos;
+            return aluno;
 
         }
 
