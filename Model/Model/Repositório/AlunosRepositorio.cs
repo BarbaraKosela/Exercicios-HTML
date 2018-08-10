@@ -14,15 +14,15 @@ namespace Model.Repositório
 
         public List<Alunos> ObterTodos()
         {
-            List<Alunos> aluno = new List<Alunos>();
+            List<Alunos> alunos = new List<Alunos>();
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "SELECT id,nome,matricula,nota01,nota02,nota03,frequencia, faltas FROM alunos";
+            comando.CommandText = "SELECT id,nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia, faltas FROM aluno";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
 
             foreach (DataRow linha in tabela.Rows)
             {
-                Alunos alunos = new Alunos()
+                Alunos aluno = new Alunos()
 
                 {
                     Id = Convert.ToInt32(linha[0].ToString()),
@@ -34,22 +34,22 @@ namespace Model.Repositório
                     frequencia = Convert.ToInt32(linha[6].ToString()),
                     Faltas = Convert.ToInt16(linha[7].ToString())
                 };
-                aluno.Add(alunos);
+                alunos.Add(aluno);
             }
-            return aluno;
+            return alunos;
 
         }
 
         public int Cadastrar(Alunos aluno)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = @"INSERT INTO alunos (nome,matricula,nota01,nota02,nota03,frequencia,faltas) OUTPUT
-            INSERTED.ID VALUES (@NOME, @MATRICULA, @NOTA01, @NOTA02, @NOTA03, @FREQUENCIA, @FALTAS)";
+            comando.CommandText = @"INSERT INTO alunos (nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia,faltas) OUTPUT
+            INSERTED.ID VALUES (@NOME, @CODIGO_MATRICULA, @NOTA_01, @NOTA_02, @NOTA_03, @FREQUENCIA, @FALTAS)";
             comando.Parameters.AddWithValue("@NOME", aluno.Nome);
-            comando.Parameters.AddWithValue("@MATRICULA", aluno.Matricula);
-            comando.Parameters.AddWithValue("@NOTA01", aluno.Nota1);
-            comando.Parameters.AddWithValue("@NOTA02", aluno.Nota2);
-            comando.Parameters.AddWithValue("@NOTA03", aluno.Nota3);
+            comando.Parameters.AddWithValue("@CODIGO_MATRICULA", aluno.Matricula);
+            comando.Parameters.AddWithValue("@NOTA_01", aluno.Nota1);
+            comando.Parameters.AddWithValue("@NOTA_02", aluno.Nota2);
+            comando.Parameters.AddWithValue("@NOTA_03", aluno.Nota3);
             comando.Parameters.AddWithValue("@FREQUENCIA", aluno.frequencia);
             comando.Parameters.AddWithValue("@FALTAS", aluno.Faltas);
             int id = Convert.ToInt32(comando.ExecuteScalar().ToString());
@@ -61,12 +61,12 @@ namespace Model.Repositório
         public bool Alterar(Alunos aluno)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "UPDATE alunos SET nome = @NOME, matricula = @MATRICULA, nota01 = @NOTA01, nota02 = @NOTA02, nota03 = NOTA03, frequencia = @FREQUENCIA, faltas = @FALTAS WHERE id = @ID";
+            comando.CommandText = "UPDATE alunos SET nome = @NOME, codigo_matricula = @CODIGO_MATRICULA, nota_01 = @NOTA_01, nota_02 = @NOTA_02, nota_03 = NOTA_03, frequencia = @FREQUENCIA, faltas = @FALTAS WHERE id = @ID";
             comando.Parameters.AddWithValue("@NOME", aluno.Nome);
-            comando.Parameters.AddWithValue("@MATRICULA", aluno.Matricula);
-            comando.Parameters.AddWithValue("@NOTA01", aluno.Nota1);
-            comando.Parameters.AddWithValue("@NOTA02", aluno.Nota2);
-            comando.Parameters.AddWithValue("@NOTA03", aluno.Nota3);
+            comando.Parameters.AddWithValue("@CODIGO_MATRICULA", aluno.Matricula);
+            comando.Parameters.AddWithValue("@NOTA_01", aluno.Nota1);
+            comando.Parameters.AddWithValue("@NOTA_02", aluno.Nota2);
+            comando.Parameters.AddWithValue("@NOTA_03", aluno.Nota3);
             comando.Parameters.AddWithValue("@FREQUENCIA", aluno.frequencia);
             comando.Parameters.AddWithValue("@FALTAS", aluno.Faltas);
             comando.Parameters.AddWithValue("@ID", aluno.Id);
@@ -88,7 +88,7 @@ namespace Model.Repositório
         {
             Alunos aluno = null;
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "SELECT nome,matricula,nota01,nota02,nota03,frequencia, faltas FROM alunos WHERE id = @ID";
+            comando.CommandText = "SELECT nome,codigo_matricula,nota_01,nota_02,nota_03,frequencia, faltas FROM alunos WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());

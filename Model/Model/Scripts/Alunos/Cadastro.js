@@ -11,13 +11,15 @@ function ValidarFormulario() {
     var textoCampoNota03 = document.getElementById("campo-nota03").value;
     var textoCampoFrequencia = document.getElementById("campo-frequencia").value;
     var textoCampoFaltas = document.getElementById("campo-faltas").value;
-
+    if (ValidarCampoNome() == false) {
+        event.preventDefault();
+    }
 }
 
 function ValidarCampoNome() {
     var textoCampoNome = document.getElementById("campo-nome").value;
 
-    document.getElementById("campo-nome").classList.remove("border-sucess");
+    
     apagarElemento("span-campo-nome-menor-10");
     apagarElemento("span-campo-nome-maior-100")
 
@@ -46,7 +48,7 @@ function ValidarCampoNome() {
     if (textoCampoNome.lenght < 7 && textoCampoNome.lenght <= 100) {
         document.getElementById("campo-nome").classList.remove("border-danger");
         document.getElementById("campo-nome").classList.add("border-sucess");
-        return true;
+        
     }
 }
 
